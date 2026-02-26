@@ -1,0 +1,41 @@
+
+// 2 txtBox
+// 1 btnClear
+// 1 btnCombinar
+
+//combinar dos textos
+
+
+namespace PROYECTO_2
+{
+	public partial class Form1 : Form
+	{
+
+		public Form1()
+		{
+			InitializeComponent();
+		}
+
+		private void btnCombinar_Click(object sender, EventArgs e)
+		{
+			lblTexto.Text = txtA.Text + " " + txtB.Text; 
+
+		}
+
+		private void btnClear_Click(object sender, EventArgs e)
+		{
+
+			////Una forma de limpiar los TextBox es asignando
+			//// una cadena vacía a su propiedad Text.
+			//txtA.Text = " ";
+			//txtB.Text = " ";
+
+			// Otra forma de limpiar los TextBox es utilizando el método Clear()
+			txtA.Clear(); //
+			txtB.Clear();
+
+			lblTexto.Text = "---------";
+		}
+	}
+}
+
