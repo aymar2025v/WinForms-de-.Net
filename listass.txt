@@ -1,0 +1,78 @@
+
+// agregar y eliminar elementos de una lista
+
+namespace PROYECTO_2
+{
+	public partial class Form1 : Form
+	{
+
+		public Form1()
+		{
+			InitializeComponent();
+		}
+
+		private void btnRegistrar_Click(object sender, EventArgs e)
+		{
+			//lblResultado.Text = $"Hola {txtNombre.Text}, tu edad es {txtEdad.Text} años.";
+			//btnRegistrar.Enabled = false;
+			//btnLimpiar.Enabled = true;
+			string nombre = txtNombre.Text;
+			int edad;
+
+			if (nombre == "")
+			{
+				lblResultado.Text = "Escribe tu nombre";
+				lblResultado.ForeColor = Color.Red;
+				return;
+			}
+
+			if (!int.TryParse(txtEdad.Text, out edad))
+			{
+				lblResultado.Text = "Escribe una edad válida";
+				lblResultado.ForeColor = Color.Red;
+				return;
+			}
+
+			//lblResultado.Text = "Registrado: " + nombre + " - Edad: " + edad;
+			string registro = nombre + " - Edad: " + edad;
+			lstRegistros.Items.Add(registro);
+
+			lblResultado.Text = "Total registros: " + lstRegistros.Items.Count;
+			lblResultado.ForeColor = Color.Blue;
+
+			//lblResultado.Text = "Registro agregado correctamente";
+			//lblResultado.ForeColor = Color.Green;
+		}
+
+		private void btnLimpiar_Click(object sender, EventArgs e)
+		{
+			//txtEdad.Clear();
+			//txtNombre.Clear();
+			//lblResultado.Text = string.Empty;
+			//btnRegistrar.Enabled = true;
+			//btnLimpiar.Enabled = false;
+			txtNombre.Clear();
+			txtEdad.Clear();
+			lblResultado.Text = "";
+			txtNombre.Focus();
+		}
+
+		private void btnEliminar_Click(object sender, EventArgs e)
+		{
+			if (lstRegistros.SelectedIndex != -1)
+			{
+				lstRegistros.Items.RemoveAt(lstRegistros.SelectedIndex);
+
+				lblResultado.Text = "Registro eliminado";
+				lblResultado.ForeColor = Color.Red;
+			}
+			else
+			{
+				lblResultado.Text = "Selecciona un registro primero";
+				lblResultado.ForeColor = Color.Orange;
+			}
+
+			lblResultado.Text += " | Total: " + lstRegistros.Items.Count;
+		}
+	}
+}
